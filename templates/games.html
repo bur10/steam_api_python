@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+</head>
+
+<body>
+    <ul>
+        <p>
+            {% for user in users %}
+            {% if user != users[-1] %}
+            <a href="{{user['profileurl']}}" target="_blank">{{user['name']}},</a>
+            {% else %}
+            <a href="{{user['profileurl']}}" target="_blank">{{user['name']}} </a>
+            {% endif %}
+            {% endfor %}
+            adlı kullanıcıların {{games|length}} tane ortak oyunu var.
+        </p>
+
+        {% for game in games %}
+        <li>
+            <div class="game">
+                <a href="https://store.steampowered.com/app/{{ game['appid'] }}" target="_blank">{{ game['name'] }}</a>
+                <img src="{{ game['img'] }}">
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

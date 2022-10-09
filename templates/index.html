@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEAM COMMON GAMES</title>
+</head>
+
+<body>
+    <form action="{{url_for('games')}}" method="post">
+        <select id="howMany" name="howMany">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <input type="text" name="user_url" style="margin-bottom: 20px;">
+        <div id="friends" style="margin-left: 36px;"></div>
+        <input type="submit" value="post">
+    </form>
+    <script>
+        console.log('hello');
+        var e = document.getElementById("howMany");
+
+        function show() {
+            var howMany = parseInt(e.options[e.selectedIndex].text);
+            console.log(howMany)
+            // var selectedValue = selectElement.options[selectElement.selectedIndex].text
+
+            var friendsDiv = document.getElementById("friends");
+            friendsDiv.textContent = ""
+
+            for (let index = 0; index < howMany; index++) {
+                var br = document.createElement("br")
+                var inputField = document.createElement("input");
+
+                inputField.type = "text"
+                inputField.className = "friendFields"
+                inputField.name = "friend" + index + "_url"
+                inputField.style = "margin-bottom: 10px;"
+
+                friendsDiv.appendChild(inputField);
+                friendsDiv.appendChild(br)
+            }
+        }
+        e.onchange = show;
+
+        show();
+    </script>
+</body>
+
+</html>
