@@ -3,7 +3,7 @@ from flask import Flask, url_for, request, render_template
 
 app = Flask(__name__)
 
-API_KEY = "F7A7253716B30AB2DE8A9F0CEB8CABDC"
+API_KEY = "yourapikey"
 URL = "http://api.steampowered.com/"
 
 
